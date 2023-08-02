@@ -10,7 +10,9 @@ class Motor {
     public:
         Motor(int port) : port(port) {};
         void setupMotor();
+        int getPort();
         void moveMotor(int power);
+        void stopMotor();
 };
 
 #endif

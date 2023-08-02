@@ -11,7 +11,12 @@ class Car {
     public:
         Car(std::initializer_list<int> left, std::initializer_list<int> right) : left(left), right(right) {};
         void setup();
-        // setup movement functions later here
-}
+
+        // setup movement functions here
+        void moveForward();
+        void turnLeft();
+        void turnRight();
+        void stop();
+};
 
 #endif

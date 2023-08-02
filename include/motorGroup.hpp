@@ -13,7 +13,8 @@ class MotorGroup {
     public:
         MotorGroup(std::initializer_list<int> motors);
         void setup();
-        void moveMotors(int power);
+        void move(int power);
+        void stop();
 };
 
 #endif
