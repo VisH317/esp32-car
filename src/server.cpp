@@ -65,3 +65,23 @@ void CarServer::processCommand(Command command) {
             break;
     }
 }
+
+void CarServer::notFound(AsyncWebServerRequest *request) {
+    request->send(404, "text/plain", "Not found");
+}
+
+void CarServer::loadAssets() {
+    server.on("/", HTTP_GET, [](AsyncWebServerRequest *request)
+        {
+            Serial.println("Requesting index page...");
+            request->send(SPIFFS, "../frontend/index.html", "text/html");
+        });
+
+    // Route to load custom.css file
+    server.on("/css/custom.css", HTTP_GET, [](AsyncWebServerRequest *request)
+        { request->send(SPIFFS, "../frontend/css/index.css", "text/css"); });
+
+    // Route to load custom.js file
+    server.on("/js/custom.js", HTTP_GET, [](AsyncWebServerRequest *request)
+        { request->send(SPIFFS, "../frontend/js/index.js", "text/javascript"); });
+}

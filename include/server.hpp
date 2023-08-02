@@ -33,7 +33,7 @@ class CarServer {
         AsyncWebSocket socket;
         Car car;
 
-        void notFound();
+        void notFound(AsyncWebServerRequest *request);
         void loadAssets();
         void onEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len);
         void processCommand(Command command)
