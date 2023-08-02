@@ -6,6 +6,7 @@
 #include <initializer_list>
 #include "motor.hpp"
 
+
 class MotorGroup {
     private:
         std::vector<Motor> motors;

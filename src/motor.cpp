@@ -2,6 +2,7 @@
 
 void Motor::setupMotor() {
     pinMode(port, OUTPUT);
+    digitalWrite(port, LOW);
 }
 
 void Motor::moveMotor(int power) {
