@@ -2,6 +2,7 @@
 #define __CAR__
 
 #include <initializer_list>
+#include "config.hpp"
 #include "motorGroup.hpp"
 class Car {
     private:
