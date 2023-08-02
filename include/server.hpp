@@ -6,6 +6,7 @@
 #include <AsyncTCP.h>
 #include <ESPAsyncWebServer.h>
 #include <string>
+#include <stdexcept>
 #include <unordered_map>
 #include "SPIFFS.h"
 #include "config.hpp"
@@ -33,13 +34,13 @@ class CarServer {
         AsyncWebSocket socket;
         Car car;
 
-        void notFound(AsyncWebServerRequest *request);
         void loadAssets();
-        void onEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len);
-        void processCommand(Command command)
+        void processCommand(Command command);
 
     public:
-        CarServer(Car& car) : car(car), server(SERVER_PORT), ws(SERVER_PATH) {};
+        CarServer(Car& car) : car(car), server(SERVER_PORT), socket(SERVER_PATH) {};;
+        void onEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len);
+        void notFound(AsyncWebServerRequest *request);
         void setup();
         void start();
 

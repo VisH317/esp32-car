@@ -1,5 +1,25 @@
 #include "server.hpp"
 
+void CarServer::setup() {
+    if(!SPIFFS.begin(true)) {
+        Serial.println("SPIFFS init error occurred");
+        throw std::runtime_error("SPIFFS init error occurred");
+    }
+
+    socket.onEvent([this](AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len) { 
+        return this->onEvent(server, client, type, arg, data, len);
+    });
+    server.addHandler(&socket);
+
+    loadAssets();
+
+    server.onNotFound([this](AsyncWebServerRequest *request) { this->notFound(request); });
+}
+
+void CarServer::start() {
+    server.begin();
+}
+
 void CarServer::onEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len) {
     switch(type) {
         case WS_EVT_CONNECT:
