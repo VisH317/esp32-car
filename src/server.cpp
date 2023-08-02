@@ -1,6 +1,7 @@
 #include "server.hpp"
 
 void CarServer::setup() {
+    car.setup();
     if(!SPIFFS.begin(true)) {
         Serial.println("SPIFFS init error occurred");
         throw std::runtime_error("SPIFFS init error occurred");

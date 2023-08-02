@@ -25,26 +25,24 @@ static const std::unordered_map<std::string, Command> codes = {
     { "right", Command::RIGHT },
     { "left", Command::LEFT },
     { "backward", Command::BACKWARD },
-    { "stop": Command::STOP },
+    { "stop", Command::STOP },
 };
 
 class CarServer {
     private:
         AsyncWebServer server;
         AsyncWebSocket socket;
-        Car car;
+        CarBot car;
 
         void loadAssets();
         void processCommand(Command command);
 
     public:
-        CarServer(Car& car) : car(car), server(SERVER_PORT), socket(SERVER_PATH) {};;
+        CarServer(CarBot& car) : car(car), server(SERVER_PORT), socket(SERVER_PATH) {};;
         void onEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len);
         void notFound(AsyncWebServerRequest *request);
         void setup();
         void start();
-
-
-}
+};
 
 #endif
