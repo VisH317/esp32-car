@@ -10,6 +10,11 @@ void Car::moveForward() {
     right.move(FORWARD_POWER);
 }
 
+void Car::moveBackward() {
+    left.move(-1 * FORWARD_POWER);
+    right.move(-1 * FORWARD_POWER);
+}
+
 void Car::turnLeft() {
     left.move(TURN_POWER);
     right.move(-1 * TURN_POWER);

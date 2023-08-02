@@ -16,6 +16,7 @@ enum Command {
     RIGHT,
     LEFT,
     BACKWARD,
+    STOP,
 };
 
 static const std::unordered_map<std::string, Command> codes = {
@@ -23,6 +24,7 @@ static const std::unordered_map<std::string, Command> codes = {
     { "right", Command::RIGHT },
     { "left", Command::LEFT },
     { "backward", Command::BACKWARD },
+    { "stop": Command::STOP },
 };
 
 class CarServer {

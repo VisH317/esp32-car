@@ -52,6 +52,16 @@ void CarServer::processCommand(Command command) {
             car.moveForward();
             break;
         case BACKWARD:
-            
+            car.moveBackward();
+            break;
+        case RIGHT:
+            car.turnRight();
+            break;
+        case LEFT:
+            car.turnLeft();
+            break;
+        case STOP:
+            car.stop();
+            break;
     }
 }
